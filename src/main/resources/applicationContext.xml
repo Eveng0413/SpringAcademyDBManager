@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- Coaches -->
+    <bean id="tennisCoach" class="com.example.HW11XML.TennisCoach" init-method="loadSchedules"/>
+    <bean id="golfCoach" class="com.example.HW11XML.GolfCoach"/>
+    <bean id="footballCoach" class="com.example.HW11XML.FootBallCoach"/>
+
+    <!-- Player and Inject Dependencies -->
+    <bean id="player" class="com.example.HW11XML.Player">
+        <constructor-arg ref="tennisCoach"/>  <!-- Constructor Injection -->
+        <property name="golfCoach" ref="golfCoach"/>  <!-- Setter Injection -->
+        <property name="footBallCoach" ref="footballCoach"/>  <!-- Setter Injection -->
+    </bean>
+
+</beans>
